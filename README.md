@@ -25,10 +25,10 @@ BASE_URL_WEATHER = "https://openweathermap.org/";
 ## Router Set Up:
 
 ```mermaid
-graph LR
-A[Template] --> B[Country]
-A --> C[Favorite]
-B --> D[PopUp]
+graph LR;
+    Template-->Country
+    Template-->Favorite
+    Country-->PopUp
 
 ```
 

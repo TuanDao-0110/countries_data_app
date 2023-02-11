@@ -1,8 +1,7 @@
 import React from "react";
 import { CountryType } from "./CountriesSlicer";
 import { Link, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./store";
+import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { addNewFavarite, removeFavorite } from "./FavoriteSlicer";
 
