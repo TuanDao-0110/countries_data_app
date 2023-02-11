@@ -1,71 +1,43 @@
-import { ChangeEvent, ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, ReactNode, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router";
 import { AppDispatch, RootState } from "../../app/store";
-import { checkLiked, getAllCountries } from "./CountriesService";
-import { CountryType } from "../../app/CountriesSlicer";
-import { RenderCard } from "../../app/RenderService";
+import { checkLiked, getCountriesWeather } from "../../service/CountriesService";
+import { RenderCard } from "../../service/RenderService";
 
 export const Country = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const [search, setSearch] = useState<string>("");
-  const [load, setLoad] = useState<number>(15);
-  const { countries, status } = useSelector((state: RootState) => state.contries);
+  const { countryWeather, status } = useSelector((state: RootState) => state.contries);
   const { favoriteCountries } = useSelector((state: RootState) => state.favorite);
-  const handldeSearch = (e: ChangeEvent<HTMLInputElement>): void => {
-    setSearch(e.target.value);
-  };
 
-  const handleLoadMore = () => {
-    setLoad((prev) => prev + 3);
-  };
-
-  const createContent = (arr: CountryType[]) => {
-    return arr
-      ?.filter((i) => i.name.official.toLowerCase().includes(search.toLowerCase()))
-      .slice(0, load)
-      .map((country, index) => {
-        return RenderCard(country, index, checkLiked(country.name.common, favoriteCountries));
-      });
-  };
-
+  const { state } = useLocation();
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    dispatch(getAllCountries());
+    dispatch(getCountriesWeather(state.name.common));
   }, [dispatch]);
 
   const renderData = () => {
-    let content: ReactElement[] | ReactElement;
+    let content: ReactElement[] | ReactElement | undefined | ReactNode[];
     if (status === "pending") {
       content = <div>loading...</div>;
     } else {
-      content = createContent(countries);
+      content = (
+        <div className="flex m-auto justify-center bg-gray-200 h-screen pt-20 px-10">
+          {RenderCard(state, 1, checkLiked(state.name.common, favoriteCountries))}
+          <div className="flex flex-col items-center p-5 ">
+            <h1 className="text-red-400 font-semibold text-4xl">Name: {countryWeather?.name}</h1>
+            <h3 className="text-left">{`Weather in ${countryWeather?.name} have temperature is: ${countryWeather?.main.temp.toFixed(1)}℃ `}</h3>
+            <h3>
+              {" "}
+              Temp: {countryWeather?.main.temp.toFixed(1)}℃ | Max: {countryWeather?.main.temp_max.toFixed(1)}℃ | Min:{" "}
+              {countryWeather?.main.temp_min.toFixed(1)}℃
+            </h3>
+            <h3>Humidity:{countryWeather?.main.humidity}°</h3>
+            <img src={`http://openweathermap.org/img/wn/${countryWeather?.weather[0].icon}@2x.png`} alt="" width={80} />
+          </div>
+        </div>
+      );
     }
     return content;
   };
-  return (
-    <div className="relative">
-      <div className="bg-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl  sm:py-24 lg:max-w-none lg:py-2">
-            <div className="flex justify-center">
-              <input
-                // value={search}
-                className="shadow appearance-none border rounded w-2/5 my-5 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="country"
-                type="text"
-                placeholder="Find Countries By Name"
-                onChange={handldeSearch}
-              />
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900 text-center">Country's List</h2>
-            <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0 gap-5">{renderData()}</div>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-5" onClick={handleLoadMore}>
-            Load More
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+  return renderData();
 };

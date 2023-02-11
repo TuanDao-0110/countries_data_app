@@ -1,9 +1,9 @@
 import React from "react";
-import { CountryType } from "./CountriesSlicer";
+import { CountryType } from "../app/CountriesSlicer";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { addNewFavarite, removeFavorite } from "./FavoriteSlicer";
+import { addNewFavarite, removeFavorite } from "../app/FavoriteSlicer";
 
 export const RenderCard = (country: CountryType, index: number, liked: boolean) => {
   const { pathname } = useLocation();

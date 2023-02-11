@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getAllCountries, getCountriesByName, getCountriesWeather } from "../features/country/CountriesService";
+import { getAllCountries, getCountriesByName, getCountriesWeather } from "../service/CountriesService";
 export interface CountryType {
   name: {
     common: string;
