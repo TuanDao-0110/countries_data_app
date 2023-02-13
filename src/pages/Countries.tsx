@@ -1,9 +1,9 @@
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../app/store";
-import { checkLiked, getAllCountries } from "../../service/CountriesService";
-import { CountryType } from "../../app/CountriesSlicer";
-import { RenderCard } from "../../service/RenderService";
+import { AppDispatch, RootState } from "../app/store";
+import { checkLiked, getAllCountries } from "../service/CountriesService";
+import { CountryType } from "../features/CountriesSlicer";
+import { RenderCard } from "../service/RenderService";
 
 export const Countries = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,7 +16,7 @@ export const Countries = () => {
   };
 
   const handleLoadMore = () => {
-    setLoad((prev) => prev + 3);
+    setLoad((prev) => prev + 15);
   };
 
   const createContent = (arr: CountryType[]) => {

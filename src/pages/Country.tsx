@@ -1,9 +1,9 @@
 import React, { ReactElement, ReactNode, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
-import { AppDispatch, RootState } from "../../app/store";
-import { checkLiked, getCountriesWeather } from "../../service/CountriesService";
-import { RenderCard } from "../../service/RenderService";
+import { AppDispatch, RootState } from "../app/store";
+import { checkLiked, getCountriesWeather } from "../service/CountriesService";
+import { RenderCard } from "../service/RenderService";
 
 export const Country = () => {
   const { countryWeather, status } = useSelector((state: RootState) => state.contries);

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
-import { RenderCard } from "../../service/RenderService";
+import { RootState } from "../app/store";
+import { RenderCard } from "../service/RenderService";
 
 export default function Favorite() {
   const { favoriteCountries } = useSelector((state: RootState) => state.favorite);

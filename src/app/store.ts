@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import CountriesSlicer from "./CountriesSlicer";
-import FavoriteSlicer from "./FavoriteSlicer";
+import CountriesSlicer from "../features/CountriesSlicer";
+import FavoriteSlicer from "../features/FavoriteSlicer";
 export const store = configureStore({
   reducer: {
     contries: CountriesSlicer,

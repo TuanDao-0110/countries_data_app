@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_COUNTRIES_GETALL, GET_COUNTRIE_BY_NAME } from "../Source/data";
-import { CountryType, WeatherType } from "../app/CountriesSlicer";
+import { CountryType, WeatherType } from "../features/CountriesSlicer";
 
 export const getAllCountries = createAsyncThunk("get_all_countries", async (): Promise<CountryType[]> => {
   try {
