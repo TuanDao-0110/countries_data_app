@@ -2,8 +2,15 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface FavoriteType {
   favoriteCountries: string[];
 }
+const setData = (): Array<string> => {
+    const storedData = localStorage.getItem("countries");
+  if (storedData) {
+    return JSON.parse(storedData);
+  }
+  return [];
+};
 const initialState: FavoriteType = {
-  favoriteCountries: [],
+  favoriteCountries: setData(),
 };
 
 export const FavoriteSlicer = createSlice({
@@ -13,6 +20,7 @@ export const FavoriteSlicer = createSlice({
     addNewFavarite: (state, action: PayloadAction<string>) => {
       let temp = [...state.favoriteCountries];
       temp.push(action.payload);
+      localStorage.setItem("countries", JSON.stringify(temp));
       return { ...state, favoriteCountries: temp };
     },
     removeFavorite: (state, action: PayloadAction<string>) => {
@@ -21,6 +29,7 @@ export const FavoriteSlicer = createSlice({
         if (index !== -1) {
           let temp = [...state.favoriteCountries];
           temp.splice(index, 1);
+          localStorage.setItem("countries", JSON.stringify(temp));
           return { ...state, favoriteCountries: temp };
         }
       }
@@ -29,5 +38,5 @@ export const FavoriteSlicer = createSlice({
   },
 });
 
-export const { addNewFavarite,removeFavorite } = FavoriteSlicer.actions;
+export const { addNewFavarite, removeFavorite } = FavoriteSlicer.actions;
 export default FavoriteSlicer.reducer;
