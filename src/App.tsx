@@ -10,13 +10,14 @@ import Register from "./pages/Register";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./auth/firebase";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
+import Main from "./pages/Main";
 
 function App() {
   const [user] = useAuthState(auth);
-  console.log(user);
   return (
     <Routes>
       <Route path="/" element={<Template />}>
+        <Route index element={<Main />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route element={<ProtectedRoute user={user} />}>

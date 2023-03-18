@@ -1,9 +1,27 @@
 # Project create countries Data and Weather.
 
+🇦🇶🇧🇦🇩🇯🇨🇷🇧🇹
+1. project aim to fetch country data and show countries's details
+2. user's can login/register
+3. Project is a part of React-Learing-Module in Helsinki Bussiness College. 
+4. Project's Teacher: Martin Holland 👉( <a href='https://github.com/martin-holland'>Link Github </a>🇹🇩)👈
 ## Technology:
 
-1. React TS
-2. Store: Redux Tool Kit
+| Teachnology         |                   |
+| ------------------- | ----------------- |
+| 1.Frontend          | React TS          |
+| 2. State Management | Redux-Tool-Kit    |
+| 3. UI Library       | Css and Tailwinds |
+| 4. Authentication   | Firebase          |
+
+## Install vs Run:
+
+```
+npm install
+```
+```
+npm run start
+```
 
 ## Function vs Data
 
@@ -19,15 +37,15 @@ BASE_COUNTRIES_GETALL = "https://restcountries.com/v3.1/all";
 BASE_URL_WEATHER = "https://openweathermap.org/";
 ```
 
-3. Store user Favorite Countries. 
-
+3. Store user Favorite Countries.
 
 ## Router Set Up:
 
 ```mermaid
 graph LR;
-    Template-->Country
-    Template-->Favorite
+    Template-->Firebase : Authentication
+    Firebase-->Country
+    Firebase-->Favorite
     Country-->Countries_Details
 
 ```
@@ -44,4 +62,3 @@ stateDiagram
     App_Dispatch --> App_Thunk
 
 ```
-

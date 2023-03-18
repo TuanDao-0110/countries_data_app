@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getAllCountries, getCountriesByName, getCountriesWeather } from "../service/CountriesService";
+import { createSlice, } from "@reduxjs/toolkit";
+import { getAllCountries, getCountriesWeather } from "../service/CountriesService";
 export interface CountryType {
   name: {
     common: string;
@@ -86,7 +86,7 @@ const initialState: StateType = {
   },
 };
 export const countrySlicer = createSlice({
-  name: "countrie",
+  name: "countries",
   initialState: initialState,
   reducers: {},
   extraReducers(builder) {
@@ -105,5 +105,5 @@ export const countrySlicer = createSlice({
       });
   },
 });
-export const {} = countrySlicer.actions;
+// export const {} = countrySlicer.actions;
 export default countrySlicer.reducer;

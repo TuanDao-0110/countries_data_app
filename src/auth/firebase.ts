@@ -1,14 +1,15 @@
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { getFirestore, collection, getDocs, where, addDoc, getDoc, query } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyC5WbtreAuEvDRfLxsXU5Iz7bCOw8jQXjI",
-  authDomain: "countryapp-c4e33.firebaseapp.com",
-  projectId: "countryapp-c4e33",
-  storageBucket: "countryapp-c4e33.appspot.com",
-  messagingSenderId: "476051309441",
-  appId: "1:476051309441:web:234cac9f8fa046f4c05e80",
-  measurementId: "G-YDPDWJDZ1D",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AuthDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
+  measurementId: process.env.REACT_APP_measurementId,
 };
 
 const app = initializeApp(firebaseConfig);

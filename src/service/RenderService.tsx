@@ -14,8 +14,12 @@ export const RenderCard = (country: CountryType, index: number, liked: boolean) 
         <img className="h-full w-full object-cover object-center" src={country.flags.png} alt="Flag" />
       </div>
       <div className=" border-gray-200">
-        <h3 className="mt-6 text-sm text-gray-500">{country.name.official}</h3>
-        <p className="text-base font-semibold text-gray-900">Capital: {country.capital}</p>
+        <div>
+          <h3 className="mt-6 text-sm text-gray-500">{country.name.official}</h3>
+          <p className="text-base font-semibold text-gray-900">Capital: {country.capital}</p>
+          <p className="text-base font-semibold text-gray-900">Area: {country.area} km2</p>
+        </div>
+
         <div className="">
           <Link to={`${pathname.length === 10 ? country.name.official : "/countries"}`} state={country}>
             <button className="bg-gray-500 p-2 rounded-md text-gray-50 text-md hover:bg-gray-100 hover:text-gray-500 duration-150">

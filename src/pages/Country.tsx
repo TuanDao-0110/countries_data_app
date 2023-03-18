@@ -13,7 +13,7 @@ export const Country = () => {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(getCountriesWeather(state.name.common));
-  }, [dispatch]);
+  }, [dispatch,state]);
 
   const renderData = () => {
     let content: ReactElement[] | ReactElement | undefined | ReactNode[];
