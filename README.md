@@ -4,7 +4,7 @@
 1. project aim to fetch country data and show countries's details
 2. user's can login/register
 3. Project is a part of React-Learing-Module in Helsinki Bussiness College. 
-4. Project's Teacher: Martin Holland 👉( <a href='https://github.com/martin-holland'>Link Github </a>🇹🇩)👈
+4. Project's Teacher: Martin Holland 👉( <a href='https://github.com/martin-holland'>Link Github </a>🇬🇧)👈
 5. Deployment: 🔗(<a href='https://countries-data-2hjs.onrender.com/'>Link deploy</a>)🔗
 
 
@@ -45,12 +45,14 @@ BASE_URL_WEATHER = "https://openweathermap.org/";
 ## Router Set Up:
 
 ```mermaid
-graph LR;
-    Template-->Firebase : Authentication
-    Firebase-->Country
-    Firebase-->Favorite
-    Country-->Countries_Details
-
+---
+title: Router
+---
+stateDiagram
+    [*] --> Template
+    Template --> Login/Register
+    Login/Register --> Countries
+    Login/Register --> Favourite
 ```
 
 ## Store Set Up:
