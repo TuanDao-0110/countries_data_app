@@ -5,6 +5,9 @@
 2. user's can login/register
 3. Project is a part of React-Learing-Module in Helsinki Bussiness College. 
 4. Project's Teacher: Martin Holland 👉( <a href='https://github.com/martin-holland'>Link Github </a>🇹🇩)👈
+5. Deployment: 🔗(<a href='https://countries-data-2hjs.onrender.com/'>Link deploy</a>)🔗
+
+
 ## Technology:
 
 | Teachnology         |                   |
