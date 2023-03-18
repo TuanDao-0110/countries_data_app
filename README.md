@@ -2,7 +2,7 @@
 
 🇦🇶🇧🇦🇩🇯🇨🇷🇧🇹
 1. project aim to fetch country data and show countries's details
-2. user's can login/register
+2. user can login/register
 3. Project is a part of React-Learing-Module in Helsinki Bussiness College. 
 4. Project's Teacher: Martin Holland 👉( <a href='https://github.com/martin-holland'>Link Github </a>🇬🇧)👈
 5. Deployment: 🔗(<a href='https://countries-data-2hjs.onrender.com/'>Link deploy</a>)🔗
